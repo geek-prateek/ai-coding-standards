@@ -5,7 +5,7 @@ description: Use when a task is blocked, the same retry failed, product or test 
 
 # Cite or Stop
 
-Two jobs: **cite** what you know, and **stop** when Cursor cannot finish it. A third retry of the same strategy is the failure mode this skill exists to cut.
+Two jobs: **cite** what you know, and **stop** when the agent cannot finish it. A third retry of the same strategy is the failure mode this skill exists to cut.
 
 ## 1. Cite every claim
 
@@ -14,21 +14,21 @@ Every sentence that states a fact carries a source on that sentence (or the one 
 | Tag | Use when |
 |---|---|
 | `[code] path:lines` | Repo file you read this turn |
-| `[runtime]` | Screenshot, quoted UI text, or a command you ran |
-| `[ticket] KEY` | Jira/AC/comment you retrieved |
-| `[user]` | Instruction in this chat |
-| `[skill] name` | Another skill required the step |
+| `[runtime]` | Screenshot, quoted UI/terminal output, test log, or a command you ran |
+| `[ticket] KEY` | Issue tracker, requirements doc, or spec you retrieved |
+| `[user]` | Instruction given directly by the user in this chat |
+| `[skill] name` | Another loaded skill or official project rule required the step |
 
 Done when: a reader can tell, for each factual sentence, which tag backs it.
 
 ## 2. Stop on the same blocker twice
 
-A **blocker** is evidence that the current strategy cannot produce the requested outcome (same modal, same missing field, same catch-22 in code).
+A **blocker** is evidence that the current strategy cannot produce the requested outcome (same error trace, missing dependency/schema, unhandled environment constraint).
 
 After the **second** evidence-backed hit of that blocker:
 
 1. State the blocker with its citations.
-2. Skip any further attempt of the same strategy (different amount, different click order, different wait — still the same strategy if the cited catch-22 is unchanged).
+2. Skip any further attempt of the same strategy (different arguments, changing timeout, or minor code reordering is still the same strategy if the cited root cause is unchanged).
 3. Go to **§3 One handoff**.
 
 Done when: you have not started a third attempt of that strategy.
@@ -37,21 +37,21 @@ Done when: you have not started a third attempt of that strategy.
 
 Give **one** next approach. Not a menu of guesses. The handoff names:
 
-- **Blocked outcome** — what the user asked for, in their words
-- **Why this agent cannot finish it** — cited (code, runtime, missing source)
-- **Where it can be resolved** — a real owner and place: human with UAT/DB, product/QA, unread engine/DLL, Jira gap, or [brain-wave](../brain-wave/SKILL.md) when a human decision is required
-- **What to take there** — the cited facts, not a new untested UI script
+- **Blocked outcome** — what the user asked for, in their words.
+- **Why this agent cannot finish it** — cited (code line, runtime exit code, missing credentials/API spec).
+- **Where it can be resolved** — a real owner and place: human reviewer, database/cloud access, product decision, or architectural clarification.
+- **What to take there** — the cited facts, not an untested speculative script.
 
-Done when: the user has one owner, one place, and the evidence pack for that place.
+Done when: the user has one owner, one place, and the cited evidence pack.
 
 Then load [lesson-to-skill](../lesson-to-skill/SKILL.md) so the blocker is landed in an owning skill and is not retried next run.
 
 ## 4. Label invented
 
-Any step, journey, or explanation that does not rest on a §1 tag is **invented**. Prefix it:
+Any step, premise, or explanation that does not rest on a §1 citation tag is **invented**. Prefix it:
 
 `Invented (not approved):` + the thought that produced it.
 
-Invented material is never presented as repo convention, ticket AC, or a proven user journey. If the only remaining approach is invented, say so in the handoff and stop; do not run it unless the user explicitly chooses it.
+Invented material is never presented as repo convention, ticket requirements, or verified behavior. If the only remaining approach is invented, say so in the handoff and stop; do not execute it unless the user explicitly chooses it.
 
 Done when: every unsourced idea in the reply carries that prefix, and none is implied to be approved.
