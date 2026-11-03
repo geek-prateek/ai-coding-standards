@@ -1,0 +1,18 @@
+{
+  "skill": "precision-and-rounding",
+  "version": "1.0.0",
+  "intent": "Agent decision-quality test scenarios; not automated test execution",
+  "cases": [
+    {"id":"preserve-half-even","given":"An existing rounding helper and tests prove Half-Even 2dp; request fixes a total mismatch.","expect":["inspect calculation order", "preserve Half-Even and scale", "use exact before-and-after values", "verify targeted tests"],"must_not":["silently switch to Half-Up"]},
+    {"id":"policy-unknown","given":"No docs, tests, configs or accessible runtime establish midpoint behavior; request says 'fix rounding'.","expect":["report UNKNOWN", "investigate or request a midpoint example", "avoid policy-changing patch"],"must_not":["assume 2dp Half-Up"]},
+    {"id":"field-specific-overrides","given":"Two operations intentionally use different scales and rounding rules.","expect":["map policy per operation", "preserve effective overrides"],"must_not":["standardize all operations"]},
+    {"id":"display-only","given":"Back-end value is correct but UI formats it inconsistently.","expect":["trace UI formatting", "keep persisted calculation unchanged"],"must_not":["rewrite back-end rounding"]},
+    {"id":"negative-values","given":"An issue occurs only for negative midpoint inputs.","expect":["distinguish rounding modes and sign semantics", "test positive and negative ties"],"must_not":["assume Round Down means truncation"]},
+    {"id":"per-line-versus-aggregate","given":"Line items sum to a different total than rounding a raw aggregate.","expect":["discover authorized rounding boundary", "test both candidate calculations", "report contract trade-off"],"must_not":["force values to match with epsilon"]},
+    {"id":"cross-language","given":"C# API and JavaScript UI show divergent values.","expect":["trace types, JSON, parsing and formatting", "verify each runtime semantics"],"must_not":["impose one runtime default on the other"]},
+    {"id":"explicit-policy-change","given":"New approved requirement changes rounding for one named field only.","expect":["characterize old and new behavior", "scope the change", "check compatibility and regressions"],"must_not":["change unrelated fields"]},
+    {"id":"small-change-high-risk","given":"Two-line rounding adjustment affects persisted records and historical recomputation.","expect":["escalate to deep review", "assess historical and storage impact"],"must_not":["classify as low risk solely by diff size"]},
+    {"id":"no-numeric-change","given":"A request is only to rename a label with no numeric processing.","expect":["avoid unnecessary numeric audit"],"must_not":["introduce rounding refactoring"]},
+    {"id":"float-domain","given":"A graphics engine intentionally uses floating-point tolerances.","expect":["respect documented approximate accuracy contract"],"must_not":["mandate decimal everywhere"]}
+  ]
+}
