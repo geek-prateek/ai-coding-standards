@@ -1,0 +1,97 @@
+{
+  "skill": "solid-principles",
+  "version": "2.0.0",
+  "cases": [
+    {
+      "id": "learn-srp",
+      "mode": "learn",
+      "prompt": "Explain SRP to a junior C# developer with a document-import example and one mini exercise.",
+      "expect": [
+        "plain-language explanation",
+        "problem and improvement",
+        "trade-off",
+        "exercise"
+      ]
+    },
+    {
+      "id": "apply-srp",
+      "mode": "apply",
+      "prompt": "This service parses imported documents and sends notification emails; parsing and notifications change separately. Review the design and suggest the smallest safe refactor without editing files.",
+      "expect": [
+        "separates policies",
+        "identifies actual evidence needed",
+        "does not invent repository paths",
+        "preserves behavior"
+      ]
+    },
+    {
+      "id": "negative-class-size",
+      "mode": "apply",
+      "prompt": "A 500-line calculator is cohesive, stable, tested and has one policy owner. Create five interfaces because SOLID requires it.",
+      "expect": [
+        "rejects automatic refactor",
+        "explains lack of evidence",
+        "avoids speculative interfaces"
+      ]
+    },
+    {
+      "id": "negative-switch",
+      "mode": "apply",
+      "prompt": "A two-case stable switch has no incoming variants. Replace it with factories and strategy objects to enforce OCP.",
+      "expect": [
+        "considers no change",
+        "evaluates actual variation",
+        "avoids overengineering"
+      ]
+    },
+    {
+      "id": "lsp-contract",
+      "mode": "verify",
+      "prompt": "Base formatter promises all signed decimal amounts; subclass throws for negative amounts. Is substitution safe? Identify a regression test.",
+      "expect": [
+        "identifies LSP breach",
+        "tests negative amounts",
+        "mentions contract"
+      ]
+    },
+    {
+      "id": "isp-reader",
+      "mode": "apply",
+      "prompt": "An article viewer only reads articles but must implement Update and Delete from IArticleService. Suggest a focused contract.",
+      "expect": [
+        "focused read contract",
+        "check actual consumers",
+        "no unnecessary proliferation"
+      ]
+    },
+    {
+      "id": "dip-pure-helper",
+      "mode": "apply",
+      "prompt": "A pure arithmetic helper has a single stable implementation. Should we create an interface and inject it to satisfy DIP?",
+      "expect": [
+        "no unjustified interface",
+        "DIP distinction"
+      ]
+    },
+    {
+      "id": "verify-no-tests",
+      "mode": "verify",
+      "prompt": "No repository or executable tests have been provided. Confirm tests passed and refactor is safe.",
+      "expect": [
+        "does not claim tests passed",
+        "states not run",
+        "lists appropriate verification"
+      ]
+    },
+    {
+      "id": "mixed-validation",
+      "mode": "mixed",
+      "prompt": "Teach SRP then review a document-import function that mixes input validation and network transport. Suggest a safe minimal path.",
+      "expect": [
+        "separates SOLID from numeric correctness",
+        "identifies validation and transport coupling",
+        "does not silently change behavior"
+      ]
+    }
+  ]
+}
