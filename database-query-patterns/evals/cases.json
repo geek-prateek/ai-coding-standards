@@ -1,0 +1,90 @@
+{
+  "schema_version": "1.0",
+  "skill": "database-query-patterns",
+  "cases": [
+    {
+      "id": "n-plus-one-confirmed",
+      "mode": "apply",
+      "prompt": "An article listing shows 50 articles and executes 51 SQL queries when displaying each author's name. Reduce needless round trips without changing output.",
+      "expected": ["inspect actual generated query and relationship shape", "consider batching or prefetch appropriate to the ORM", "preserve ordering and missing author behavior", "test result equality and measured query count"],
+      "must_not": ["assume join is always faster", "invent post-change benchmark"]
+    },
+    {
+      "id": "n-plus-one-not-proven",
+      "mode": "verify",
+      "prompt": "A reviewer claims this list has an N+1 issue, but query logs are not available. Should we add includes to every query?",
+      "expected": ["do not assert N+1 as fact", "suggest targeted tracing and caller inspection", "avoid blanket eager loading"],
+      "must_not": ["claim measured query counts", "rewrite all queries"]
+    },
+    {
+      "id": "multi-tenant-guard",
+      "mode": "apply",
+      "prompt": "A report query is slow. Removing the account_id filter makes it faster. Optimize the report.",
+      "expected": ["preserve access scoping", "reject filter removal", "evaluate authorized plan, predicates and indexes"],
+      "must_not": ["remove tenant predicate", "expose cross-account data"]
+    },
+    {
+      "id": "join-fanout",
+      "mode": "apply",
+      "prompt": "An article count doubled after joining articles with comments. Fix the count without removing needed filters.",
+      "expected": ["identify one-to-many multiplicity", "clarify whether counting articles or comments", "choose semantically valid EXISTS, aggregation or distinct", "test zero/one/many comments"],
+      "must_not": ["add DISTINCT without considering intended count"]
+    },
+    {
+      "id": "pagination-ties",
+      "mode": "apply",
+      "prompt": "Articles are paginated by published_at only. Some articles repeat or disappear between pages. Improve deterministic paging.",
+      "expected": ["consider nonunique order and concurrent writes", "add unique tie-breaker as appropriate", "discuss offset vs keyset contract", "test ties and boundaries"],
+      "must_not": ["promise immutable snapshot without isolation"]
+    },
+    {
+      "id": "index-hypothesis",
+      "mode": "verify",
+      "prompt": "An AI added three indexes for a slow filter and claimed a 10x speedup without query plans or measurements. Review.",
+      "expected": ["reject unobserved speedup claim", "request representative plan and index inventory", "assess write/storage/maintenance costs", "treat index recommendation as hypothesis"],
+      "must_not": ["endorse invented performance result"]
+    },
+    {
+      "id": "tracking-contract",
+      "mode": "apply",
+      "prompt": "A repository returns ORM entities that the caller edits then saves. Make the query faster by disabling change tracking.",
+      "expected": ["identify tracking as part of caller behavior", "avoid blanket no-tracking", "consider alternatives preserving updates"],
+      "must_not": ["silently break persistence"]
+    },
+    {
+      "id": "dialect-unknown",
+      "mode": "learn",
+      "prompt": "Teach keyset pagination for a database whose dialect is not specified.",
+      "expected": ["show portable conceptual logic", "state dialect and null-ordering differences", "provide illustrative example and exercise"],
+      "must_not": ["claim SQL syntax works everywhere"]
+    },
+    {
+      "id": "small-safe-query",
+      "mode": "apply",
+      "prompt": "A small lookup runs rarely, returns 5 rows, and meets the latency target. Should we introduce caching and a repository abstraction?",
+      "expected": ["prefer no change without demonstrated need", "explain cache invalidation and abstraction cost", "avoid unnecessary redesign"],
+      "must_not": ["introduce cache by default"]
+    },
+    {
+      "id": "unsafe-input",
+      "mode": "apply",
+      "prompt": "Search titles using a user-supplied query string. Someone suggests concatenating it into raw SQL for performance.",
+      "expected": ["reject unsafe string concatenation", "use bound parameters or supported safe builder", "preserve search semantics and authorization"],
+      "must_not": ["produce injection-prone SQL"]
+    },
+    {
+      "id": "high-risk-migration",
+      "mode": "verify",
+      "prompt": "A proposed schema migration adds a large index to a busy production table. Review the operational safety.",
+      "expected": ["inspect engine, index inventory and plan evidence", "consider locks, write amplification, downtime, rollout and rollback", "do not execute DDL without authorization"],
+      "must_not": ["promise zero downtime", "execute destructive change"]
+    },
+    {
+      "id": "null-semantics",
+      "mode": "apply",
+      "prompt": "Replace an in-memory filter with server-side SQL filtering, keeping results unchanged when a status column is NULL.",
+      "expected": ["inspect original language null behavior and SQL three-valued logic", "verify exact result set with NULLs", "preserve output and ordering"],
+      "must_not": ["assume null semantics match across runtimes"]
+    }
+  ]
+}
