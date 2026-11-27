@@ -1,147 +1,100 @@
-
 # 🧠 AI Coding Standards & Agent Skills
 
 [![skills.sh](https://skills.sh/b/geek-prateek/ai-coding-standards)](https://skills.sh/geek-prateek/ai-coding-standards)
 
-**Learn engineering principles. Apply them in context. Verify the outcome.**
+**Understand. Learn. Apply. Verify. Improve.**
 
-A public collection of reusable, project-aware skills for AI coding agents and developers.
+A collection of reusable, project-aware skills that help AI agents understand requirements, make better engineering decisions, reduce hallucinations, and deliver reliable results.
 
-These skills help AI understand existing project conventions, make better engineering decisions, apply appropriate coding practices, and verify changes without introducing unnecessary complexity.
+Project-independent, language-agnostic, composable, and token-conscious.
 
 ---
 
 ## 📑 Skills Catalog
 
-### 🛡️ Governance & Discipline
+| Skill | Purpose |
+| :--- | :--- |
+| **[`prompt-intelligence`](./prompt-intelligence/SKILL.md)** | Detect missing requirements, resolve ambiguity, discover scenarios, optimize prompts, and verify outcomes. |
+| **[`cite-or-stop`](./cite-or-stop/SKILL.md)** | Enforce evidence-backed claims, reduce hallucinations, and prevent repeated failed attempts. |
+| **[`lesson-to-skill`](./lesson-to-skill/SKILL.md)** | Convert confirmed mistakes and corrections into reusable preventive instructions. |
+| **[`solid-principles`](./solid-principles/SKILL.md)** | Apply SOLID principles without unnecessary abstractions or overengineering. |
+| **[`precision-and-rounding`](./precision-and-rounding/SKILL.md)** | Preserve numeric precision, rounding consistency, and existing calculation behavior. |
+| **[`database-query-patterns`](./database-query-patterns/SKILL.md)** | Optimize database queries, ORM patterns, and performance while preserving data correctness. |
 
-| Skill | Description | Best For |
-| :--- | :--- | :--- |
-| **[`cite-or-stop`](./cite-or-stop/SKILL.md)** | Enforces evidence-backed claims, prevents repeated failed attempts, and provides structured handoffs when blocked. | Avoiding hallucinations, unsupported assumptions, and retry loops. |
+## 🚀 Installation
 
-### 🔄 Meta-Learning & Self-Healing
-
-| Skill | Description | Best For |
-| :--- | :--- | :--- |
-| **[`lesson-to-skill`](./lesson-to-skill/SKILL.md)** | Converts confirmed errors, user corrections, and recurring problems into reusable instructions to help prevent the same mistakes in future tasks. | Continuous learning, error prevention, and improving AI agent behavior. |
-
-| **[`prompt-intelligence`](./prompt-intelligence/SKILL.md)** | Identifies consequential prompt gaps, discovers relevant scenarios, compiles actionable requirements and verifies outcomes against evidence. | Ambiguous tasks, complex changes, prompt improvement and output verification. |
-
-Add `prompt-intelligence/` with `SKILL.md` and `EVALUATIONS.md` to both repository and per-project layout examples. Keep all existing entries and setup instructions.
-
-### 🏗️ Coding Standards & Best Practices
-
-| Skill | Description | Best For |
-| :--- | :--- | :--- |
-| **[`solid-principles`](./solid-principles/SKILL.md)** | Helps developers learn and apply SOLID principles. Analyzes existing code and suggests design improvements without introducing unnecessary abstractions. | Clean, maintainable, and extensible code. |
-| **[`precision-and-rounding`](./precision-and-rounding/SKILL.md)** | Analyzes existing numeric types, rounding rules, calculations, and configurations before suggesting changes. Preserves established project behavior unless explicitly instructed otherwise. | Preventing precision loss, incorrect rounding, and calculation inconsistencies. |
-| **[`database-query-patterns`](./database-query-patterns/SKILL.md)** | Analyzes database queries, ORM patterns, schemas, and indexes before recommending improvements. Helps identify inefficient queries while preserving existing data behavior. | Query optimization, database performance, and data correctness. |
-
-> **Learn → Apply → Verify:** Understand the principle, apply it according to existing project conventions, and verify the outcome.
-
----
-
-## 🚀 Quick Setup & Usage
-
-### ⚡ Quick Install (Recommended)
-
-Install AI coding skills directly from GitHub:
+**Install all skills:**
 
 ```bash
 npx skills add geek-prateek/ai-coding-standards
 ```
 
-Install a specific skill:
+**Install a specific skill:**
 
 ```bash
-npx skills add geek-prateek/ai-coding-standards --skill precision-and-rounding
+npx skills add geek-prateek/ai-coding-standards --skill prompt-intelligence
 ```
 
-Install globally across projects:
+**Install globally across projects:**
 
 ```bash
 npx skills add geek-prateek/ai-coding-standards -g
 ```
 
-```bash
-npx skills add geek-prateek/ai-coding-standards --skill prompt-intelligence -g
-```
-
-Browse available skills:
+**List available skills:**
 
 ```bash
 npx skills add geek-prateek/ai-coding-standards --list
 ```
 
-Explore skills at [skills.sh](https://skills.sh).
-
-### Option 1: Global Setup (Works Across All Projects)
-
-Install once to make these skills available across projects.
-
-#### Google Antigravity
-
-```bash
-# Windows (PowerShell)
-cd $HOME\.gemini\config\skills
-git clone https://github.com/geek-prateek/ai-coding-standards.git .
-```
-
-```bash
-# macOS / Linux
-cd ~/.gemini/config/skills
-git clone https://github.com/geek-prateek/ai-coding-standards.git .
-```
-
-#### Claude Code
-
-```bash
-cd ~/.claude/skills
-git clone https://github.com/geek-prateek/ai-coding-standards.git .
-```
-
-> **Note:** Skill discovery paths may vary by agent and version. The Skills CLI is the recommended installation method for supported agents.
-
----
-
-### Option 2: Per-Project Setup
-
-To use skills in a specific project, copy the required skill folders into your agent's supported skills directory.
-
-Example:
-
-```text
-my-project/
-├── .agents/
-│   └── skills/
-│       ├── cite-or-stop/
-│       │   └── SKILL.md
-│       ├── lesson-to-skill/
-│       │   └── SKILL.md
-│       ├── solid-principles/
-│       │   └── SKILL.md
-│       ├── precision-and-rounding/
-│       │   └── SKILL.md
-│       └── database-query-patterns/
-│           └── SKILL.md
-└── src/
-```
-
-#### Or via Git Submodule
+Alternatively, copy the required skill folders into your agent's supported skills directory or use a Git submodule:
 
 ```bash
 git submodule add https://github.com/geek-prateek/ai-coding-standards.git .agents/skills/shared
 ```
 
-Ensure your coding agent can discover the nested skill folders.
+Skill discovery paths vary by agent and version. Ensure your agent supports nested skill directories. The Skills CLI is recommended for supported agents.
 
----
+## 🤖 Usage
 
-## 📂 Repository Layout
+Invoke a specific skill:
+
+```text
+Use prompt-intelligence to analyze this requirement
+before implementation.
+```
+
+Or add the following to your global agent instructions:
+
+```text
+Automatically use relevant installed skills.
+Inspect existing context before making changes.
+Identify consequential gaps, risks, and edge cases.
+Follow project conventions and preserve existing behavior.
+Ground claims in evidence and verify outcomes.
+Learn from confirmed mistakes.
+Avoid unnecessary complexity and token consumption.
+```
+
+## 🔄 Skill Workflow
+
+| Stage | Skill |
+| :--- | :--- |
+| Understand & Discover | `prompt-intelligence` |
+| Apply & Implement | Relevant coding standards |
+| Verify & Validate | `cite-or-stop` |
+| Learn & Improve | `lesson-to-skill` |
+
+Skills work independently or together. Apply only what the task requires.
+
+## 📂 Repository Structure
 
 ```text
 ai-coding-standards/
 ├── README.md
+├── prompt-intelligence/
+│   ├── SKILL.md
+│   └── EVALUATIONS.md
 ├── cite-or-stop/
 │   └── SKILL.md
 ├── lesson-to-skill/
@@ -154,55 +107,39 @@ ai-coding-standards/
     └── SKILL.md
 ```
 
-*Each skill may also contain supporting references, examples, and evaluation cases.*
+## 🎯 Core Principles
 
----
+- **Context First:** Understand existing behavior before making changes.
+- **Evidence Over Assumptions:** Never fabricate facts, citations, or test results.
+- **Scenario Coverage:** Consider relevant edge cases and regression risks.
+- **Simplicity:** Avoid unnecessary changes, abstractions, and token usage.
+- **Privacy:** Never publish proprietary code, credentials, private data, or internal references.
+- **Continuous Improvement:** Learn from verified outcomes and confirmed mistakes.
 
-## ➕ How to Add a New Skill
+## 🧪 Evaluation
 
-To keep the repository clean and scalable:
+Measure effectiveness through requirement coverage, factual accuracy, functional correctness, regression testing, token efficiency, and reduced rework.
 
-1. **Create a directory:** `<skill-name>/`
-2. **Add `SKILL.md`:** Include valid YAML frontmatter.
-3. **Define when to use it:** Describe the specific problem and activation criteria.
-4. **Follow existing project conventions:** Avoid forcing patterns or changing established behavior without justification.
-5. **Keep it generic:** Do not include proprietary code, credentials, internal URLs, or company-specific information.
-6. **Add evaluations where useful:** Include practical scenarios to verify the skill's effectiveness.
-7. **Update the catalog:** Add the new skill to the Skills Catalog.
+See [Prompt Intelligence Evaluations](./prompt-intelligence/EVALUATIONS.md).
 
-Example `SKILL.md`:
-
-```yaml
----
-name: skill-name
-description: >-
-  Describe what the skill does and when to use it.
----
-
-# Skill Title
-
-## Learn
-Explain the concept with practical examples.
-
-## Apply
-Analyze existing project conventions before suggesting changes.
-
-## Verify
-Validate correctness, compatibility, and edge cases.
-```
-
-> **Important:** Don't create a skill just because a programming concept exists. Create one when a recurring problem benefits from a specific, reusable workflow.
-
----
+Skills improve AI reliability but do not guarantee hallucination-free or error-free results.
 
 ## 🤝 Contributing
 
-Contributions, suggestions, and improvements are welcome!
+New skills and improvements are welcome.
 
-Feel free to open an issue or submit a pull request to improve existing skills or propose new ones.
+- Address a recurring, reusable problem.
+- Include a `SKILL.md` with valid YAML frontmatter.
+- Define activation criteria, instructions, and verification rules.
+- Keep examples generic and privacy-safe.
+- Add evaluations where useful and update the catalog.
 
----
+Follow existing conventions and avoid duplicating skill responsibilities.
 
 ## 📄 License
 
-See the repository's [LICENSE](LICENSE) file for licensing information.
+See [LICENSE](LICENSE).
+
+---
+
+**Better prompts. Better decisions. Verified outcomes.**
