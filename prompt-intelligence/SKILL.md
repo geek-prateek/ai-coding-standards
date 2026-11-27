@@ -1,7 +1,11 @@
 ---
 name: prompt-intelligence
 description: >-
-  Automatically use for tasks involving ambiguity, missing requirements, complex changes, significant risk, scenario discovery, prompt improvement, or output verification. Inspect context, resolve material gaps, execute with evidence, and verify outcomes. Keep simple tasks simple.
+  Automatically use before answering when the ask is ambiguous, missing requirements,
+  feedback/stakeholder paste-ready drafting, prompt improvement, complex or high-risk
+  change, scenario discovery, or output verification. Load this skill first; run Preflight
+  when the user prompt itself needs sharpening, then execute. Inspect context, resolve
+  material gaps, execute with evidence, and verify outcomes. Keep simple tasks simple.
 ---
 
 # Prompt Intelligence
@@ -26,6 +30,8 @@ Automatically determine task complexity, uncertainty, and risk.
 - **Preflight:** Improve the prompt and expose gaps without implementation.
 - **Verify:** Audit existing output against requirements and evidence.
 - **Deep:** Extend investigation, alternatives, and scenario coverage where justified.
+
+**Preflight-first (hard):** If the user ask is vague, feedback-shaped, stakeholder paste-ready, or about improving a prompt — load this skill and run Preflight before drafting the deliverable. Do not answer from the raw prompt alone when sharpening the ask would change audience, scope, evidence bar, or output format. After Preflight, continue in Auto when the user wants the deliverable (same turn if they already asked for it).
 
 Answer simple, clear, low-risk tasks directly. Apply deeper analysis only when it materially improves the outcome.
 
