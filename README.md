@@ -25,6 +25,10 @@ These skills help AI understand existing project conventions, make better engine
 | :--- | :--- | :--- |
 | **[`lesson-to-skill`](./lesson-to-skill/SKILL.md)** | Converts confirmed errors, user corrections, and recurring problems into reusable instructions to help prevent the same mistakes in future tasks. | Continuous learning, error prevention, and improving AI agent behavior. |
 
+| **[`prompt-intelligence`](./prompt-intelligence/SKILL.md)** | Identifies consequential prompt gaps, discovers relevant scenarios, compiles actionable requirements and verifies outcomes against evidence. | Ambiguous tasks, complex changes, prompt improvement and output verification. |
+
+Add `prompt-intelligence/` with `SKILL.md` and `EVALUATIONS.md` to both repository and per-project layout examples. Keep all existing entries and setup instructions.
+
 ### 🏗️ Coding Standards & Best Practices
 
 | Skill | Description | Best For |
@@ -57,6 +61,10 @@ Install globally across projects:
 
 ```bash
 npx skills add geek-prateek/ai-coding-standards -g
+```
+
+```bash
+npx skills add geek-prateek/ai-coding-standards --skill prompt-intelligence -g
 ```
 
 Browse available skills:
