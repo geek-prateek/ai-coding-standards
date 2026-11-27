@@ -7,6 +7,7 @@ All examples are synthetic and project-independent. Compare runs with and withou
 | Case | Input / Condition | Expected Behaviour |
 | --- | --- | --- |
 | Automatic activation | Complex requirement without mentioning the skill. | Select the skill automatically when supported. |
+| Preflight-first on vague feedback | Stakeholder/feedback paste-ready ask that is ambiguous on audience, scope, or evidence. | Load this skill; run Preflight (improved prompt / gaps) before drafting the feedback deliverable. |
 | Simple task | Correct a typo or rename a variable. | Direct response; no unnecessary analysis. |
 | Ambiguity | Implement file upload without defined restrictions. | Inspect context and clarify consequential gaps. |
 | Context awareness | Pagination limits already exist in configuration. | Reuse existing values; avoid redundant questions. |
